@@ -1,0 +1,1 @@
+alert ip any any -> any any (msg:"LUAJIT Evil Flag"; luajit:evilflag.lua; sid:1;)
