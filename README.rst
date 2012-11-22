@@ -41,6 +41,10 @@ Once this is done, you can build Suricata ::
  $ make install
  $ make install-full # install configuration and download rules
 
+Enter into luaevilbit directory and copy evilflag.lua to rules directory ::
+
+ $ sudo cp evilflag.lua /usr/local/etc/suricata/rules/
+
 You can then run ::
 
  $ sudo suricata -i eth0 -S evilflag.rules
