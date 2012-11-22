@@ -3,6 +3,7 @@
 function init (args)
     local needs = {}
     needs["packet"] = tostring(true)
+    math.randomseed(os.time())
     return needs
 end
 
@@ -10,7 +11,6 @@ end
 -- One Flag to bring them all and in the darkness bind them
 
 function match(args)
-    math.randomseed(os.time())
     for k,v in pairs(args) do
 	if tostring(k) == "packet" then
 	    local random = math.random(0,100)
@@ -22,7 +22,7 @@ function match(args)
 	    b1, b2 = string.byte(v, ip_offset+6+1), string.byte(v, ip_offset+6+2)
 	    local ip_header_frag_buff = b1*256 + b2
 	    local evil_flag = bit.band(ip_header_frag_buff, 0x8000)~=0
-	    if evil_flag == true then
+	    if evil_flag == true and math.random(0,100) > 8 then -- False negative
 		return 1
 	    end
 	end
